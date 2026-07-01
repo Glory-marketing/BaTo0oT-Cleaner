@@ -106,10 +106,23 @@ export default function DownloadPage() {
                     ))}
                   </ul>
 
-                  <button className="btn-primary w-full text-lg !py-4 flex items-center justify-center gap-2">
-                    <HiDownload size={22} />
-                    {isArabic ? 'تحميل' : 'Download'} {os.label}
-                  </button>
+                  {(os.id === 'windows') ? (
+                    <a
+                      href="https://github.com/Glory-marketing/BaTo0oT-Cleaner/releases/download/v3.0.0/BaTo0oT-Cleaner-v3.0-Windows.zip"
+                      className="btn-primary w-full text-lg !py-4 flex items-center justify-center gap-2"
+                    >
+                      <HiDownload size={22} />
+                      {isArabic ? 'تحميل' : 'Download'} {os.label}
+                    </a>
+                  ) : (
+                    <a
+                      href="https://github.com/Glory-marketing/BaTo0oT-Cleaner/releases/tag/v3.0.0"
+                      className="btn-secondary w-full text-lg !py-4 flex items-center justify-center gap-2"
+                    >
+                      <HiDownload size={22} />
+                      {isArabic ? 'قريباً' : 'Coming Soon'}
+                    </a>
+                  )}
 
                   <p className="text-xs text-gray-500 flex items-center justify-center gap-1">
                     <HiShieldCheck className="text-primary-500" />

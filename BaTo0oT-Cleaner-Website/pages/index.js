@@ -33,15 +33,15 @@ export default function Home() {
               the ultimate system optimization tool.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <button className="btn-primary text-lg !px-10 !py-4 flex items-center gap-2">
+              <a href="https://github.com/Glory-marketing/BaTo0oT-Cleaner/releases/download/v3.0.0/BaTo0oT-Cleaner-v3.0-Windows.zip" className="btn-primary text-lg !px-10 !py-4 flex items-center gap-2">
                 Download for Windows
-              </button>
-              <button className="btn-secondary text-lg !px-10 !py-4">
+              </a>
+              <a href="https://github.com/Glory-marketing/BaTo0oT-Cleaner/releases/tag/v3.0.0" className="btn-secondary text-lg !px-10 !py-4">
                 Download for macOS
-              </button>
-              <button className="btn-secondary text-lg !px-10 !py-4">
+              </a>
+              <a href="https://github.com/Glory-marketing/BaTo0oT-Cleaner/releases/tag/v3.0.0" className="btn-secondary text-lg !px-10 !py-4">
                 Download for Linux
-              </button>
+              </a>
             </div>
             <p className="text-xs text-gray-500">
               Free version available. No credit card required.
