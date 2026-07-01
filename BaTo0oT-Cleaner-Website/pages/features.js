@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import {
-  HiBolt, HiChip, HiShieldCheck, HiCube, HiColorSwatch, HiClock,
+  HiChip, HiShieldCheck, HiCube, HiColorSwatch, HiClock,
   HiDownload, HiPlay, HiServer, HiGlobe, HiCode, HiAdjustments,
   HiLightningBolt, HiStar, HiFire, HiLockClosed, HiCloudUpload,
   HiChartBar, HiSupport, HiDatabase
@@ -58,7 +58,7 @@ export default function FeaturesPage() {
           items: [
             { name: 'Network Optimizer', desc: 'تحسين إعدادات الشبكة للأونلاين', icon: <HiGlobe /> },
             { name: 'CPU Affinity Manager', desc: 'توزيع المعالجات بذكاء', icon: <HiChip /> },
-            { name: 'RAM Allocator', desc: 'إدارة الذاكرة المخصصة للألعاب', icon: <HiBolt /> },
+            { name: 'RAM Allocator', desc: 'إدارة الذاكرة المخصصة للألعاب', icon: <HiLightningBolt /> },
             { name: 'Power Plan Pro', desc: 'خطط طاقة خارقة وغير موجودة بويندوز', icon: <HiLightningBolt /> },
             { name: 'DNS Switcher', desc: 'تبديل DNS لأسرع اتصال', icon: <HiGlobe /> },
             { name: 'TCP/IP Optimizer', desc: 'تعديل إعدادات الشبكة العميقة', icon: <HiAdjustments /> },
@@ -122,7 +122,7 @@ export default function FeaturesPage() {
           items: [
             { name: 'Network Optimizer', desc: 'Optimize network for online gaming', icon: <HiGlobe /> },
             { name: 'CPU Affinity Manager', desc: 'Smart core distribution', icon: <HiChip /> },
-            { name: 'RAM Allocator', desc: 'Dedicated gaming memory management', icon: <HiBolt /> },
+            { name: 'RAM Allocator', desc: 'Dedicated gaming memory management', icon: <HiLightningBolt /> },
             { name: 'Power Plan Pro', desc: 'Hidden ultimate performance power plans', icon: <HiLightningBolt /> },
             { name: 'DNS Switcher', desc: 'Auto-switch to fastest DNS', icon: <HiGlobe /> },
             { name: 'TCP/IP Optimizer', desc: 'Deep network stack tuning', icon: <HiAdjustments /> },

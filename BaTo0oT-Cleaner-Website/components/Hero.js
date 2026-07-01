@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { HiDownload, HiPlay, HiShieldCheck, HiLightningBolt, HiChip, HiSpeedometer } from 'react-icons/hi'
+import { HiDownload, HiPlay, HiShieldCheck, HiLightningBolt, HiChip, HiChartBar } from 'react-icons/hi'
 
 export default function Hero() {
   const [isArabic, setIsArabic] = useState(false)
@@ -103,7 +103,7 @@ export default function Hero() {
                   <div className="glass rounded-2xl p-4 space-y-3">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
-                        <HiSpeedometer className="text-primary-500" />
+                        <HiChartBar className="text-primary-500" />
                         <span className="text-sm text-gray-300">
                           {isArabic ? 'حالة النظام' : 'System Status'}
                         </span>

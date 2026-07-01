@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import {
-  HiBolt,
+  HiLightningBolt,
   HiChip,
   HiShieldCheck,
   HiCube,
@@ -62,7 +62,7 @@ export default function Features() {
           bgColor: 'bg-orange-500/10',
         },
         {
-          icon: <HiBolt size={28} />,
+          icon: <HiLightningBolt size={28} />,
           title: 'وضع Esports',
           desc: 'تعديلات احترافية في ثانية: Res, Graphics, Input Lag',
           color: 'from-red-500 to-rose-400',
@@ -148,7 +148,7 @@ export default function Features() {
           bgColor: 'bg-orange-500/10',
         },
         {
-          icon: <HiBolt size={28} />,
+          icon: <HiLightningBolt size={28} />,
           title: 'Esports Mode',
           desc: 'Pro settings in 1 click: Res, Graphics, Input Lag tweaks',
           color: 'from-red-500 to-rose-400',
