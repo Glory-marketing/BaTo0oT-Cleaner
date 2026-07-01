@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BaTo0oT Cleaner</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Title Bar -->
+  <div class="titlebar" id="titlebar">
+    <div class="titlebar-drag" id="drag-area">
+      <div class="titlebar-logo">
+        <div class="logo-icon">B</div>
+        <span>BaTo0oT Cleaner</span>
+      </div>
+    </div>
+    <div class="titlebar-controls">
+      <button class="control-btn" onclick="window.electronAPI.minimize()">
+        <svg width="12" height="12" viewBox="0 0 12 12"><rect y="5" width="12" height="1.5" fill="currentColor"/></svg>
+      </button>
+      <button class="control-btn" id="max-btn" onclick="window.electronAPI.maximize()">
+        <svg width="12" height="12" viewBox="0 0 12 12"><rect x="1" y="1" width="10" height="10" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+      </button>
+      <button class="control-btn control-close" onclick="window.electronAPI.close()">
+        <svg width="12" height="12" viewBox="0 0 12 12"><line x1="1" y1="1" x2="11" y2="11" stroke="currentColor" stroke-width="1.5"/><line x1="11" y1="1" x2="1" y2="11" stroke="currentColor" stroke-width="1.5"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <nav class="sidebar-nav">
+      <a href="#" class="nav-item active" data-page="overview">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/></svg>
+        <span>Overview</span>
+      </a>
+      <a href="#" class="nav-item" data-page="cleaner">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path d="M4 3a2 2 0 100 4h12a2 2 0 100-4H4z"/><path fill-rule="evenodd" d="M3 8h14v7a2 2 0 01-2 2H5a2 2 0 01-2-2V8zm5 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"/></svg>
+        <span>Cleaner</span>
+      </a>
+      <a href="#" class="nav-item" data-page="booster">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z"/></svg>
+        <span>Booster</span>
+      </a>
+      <a href="#" class="nav-item" data-page="emulator">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4z"/><path d="M3 10a1 1 0 011-1h12a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6z"/></svg>
+        <span>Emulator</span>
+      </a>
+      <a href="#" class="nav-item" data-page="settings">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z"/></svg>
+        <span>Settings</span>
+      </a>
+    </nav>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content" id="main-content">
+    <!-- Overview Page -->
+    <div class="page active" id="page-overview">
+      <h1>System Overview</h1>
+      <div class="stats-grid" id="stats-grid">
+        <div class="stat-card glass">
+          <div class="stat-label">CPU</div>
+          <div class="stat-value" id="cpu-value">0%</div>
+          <div class="stat-bar"><div class="stat-bar-fill" id="cpu-bar"></div></div>
+        </div>
+        <div class="stat-card glass">
+          <div class="stat-label">RAM</div>
+          <div class="stat-value" id="ram-value">0%</div>
+          <div class="stat-bar"><div class="stat-bar-fill" id="ram-bar"></div></div>
+        </div>
+        <div class="stat-card glass">
+          <div class="stat-label">GPU</div>
+          <div class="stat-value" id="gpu-value">0%</div>
+          <div class="stat-bar"><div class="stat-bar-fill" id="gpu-bar"></div></div>
+        </div>
+        <div class="stat-card glass">
+          <div class="stat-label">Disk</div>
+          <div class="stat-value" id="disk-value">0%</div>
+          <div class="stat-bar"><div class="stat-bar-fill" id="disk-bar"></div></div>
+        </div>
+      </div>
+      <div class="actions-grid">
+        <button class="action-btn glass" onclick="window.electronAPI.quickClean()">
+          <div class="action-icon">🧹</div>
+          <div class="action-label">Quick Clean</div>
+        </button>
+        <button class="action-btn glass">
+          <div class="action-icon">🎮</div>
+          <div class="action-label">Game Mode</div>
+        </button>
+        <button class="action-btn glass">
+          <div class="action-icon">🔍</div>
+          <div class="action-label">Deep Scan</div>
+        </button>
+        <button class="action-btn glass">
+          <div class="action-icon">⚡</div>
+          <div class="action-label">Boost</div>
+        </button>
+      </div>
+    </div>
+
+    <!-- Cleaner Page -->
+    <div class="page" id="page-cleaner">
+      <h1>System Cleaner</h1>
+      <p class="page-desc">Scan and remove junk files to free up space</p>
+      <button class="primary-btn" onclick="startClean()">Start Scan</button>
+      <div class="progress-container" id="progress-container" style="display:none">
+        <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+        <div class="progress-text" id="progress-text">0%</div>
+      </div>
+      <div class="results-container" id="results-container" style="display:none"></div>
+    </div>
+
+    <!-- Booster Page -->
+    <div class="page" id="page-booster">
+      <h1>Game Booster</h1>
+      <p class="page-desc">Optimize your system for gaming</p>
+      <div class="toggle-card glass" onclick="toggleGameMode()">
+        <div>
+          <div class="toggle-label">Game Mode</div>
+          <div class="toggle-desc">Kill unnecessary processes</div>
+        </div>
+        <div class="toggle-switch" id="game-mode-switch"></div>
+      </div>
+      <div class="toggle-card glass" onclick="toggleEsports()">
+        <div>
+          <div class="toggle-label">Esports Mode</div>
+          <div class="toggle-desc">Pro settings in one click</div>
+        </div>
+        <div class="toggle-switch" id="esports-switch"></div>
+      </div>
+    </div>
+
+    <!-- Emulator Page -->
+    <div class="page" id="page-emulator">
+      <h1>Emulator Optimizer</h1>
+      <p class="page-desc">Boost your emulator performance</p>
+      <div class="emulator-list">
+        <button class="emulator-btn glass active" onclick="selectEmulator('bluestacks')">Bluestacks</button>
+        <button class="emulator-btn glass" onclick="selectEmulator('ldplayer')">LDPlayer</button>
+        <button class="emulator-btn glass" onclick="selectEmulator('memu')">MEmu</button>
+        <button class="emulator-btn glass" onclick="selectEmulator('nox')">Nox</button>
+      </div>
+      <button class="primary-btn">Optimize Now</button>
+    </div>
+
+    <!-- Settings Page -->
+    <div class="page" id="page-settings">
+      <h1>Settings</h1>
+      <p class="page-desc">Customize your experience</p>
+      <div class="settings-list">
+        <div class="setting-item">
+          <span>Launch on Startup</span>
+          <div class="toggle-switch" id="autostart-switch"></div>
+        </div>
+        <div class="setting-item">
+          <span>Auto Update</span>
+          <div class="toggle-switch" id="autoupdate-switch"></div>
+        </div>
+        <div class="setting-item">
+          <span>Auto Clean on Idle</span>
+          <div class="toggle-switch" id="autoclean-switch"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
