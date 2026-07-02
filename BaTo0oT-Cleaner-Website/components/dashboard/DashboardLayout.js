@@ -1,21 +1,29 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { useAuth } from '@/contexts/AuthContext'
 import {
   HiHome, HiChip, HiShieldCheck, HiCube, HiAdjustments,
-  HiDownload, HiStar, HiLogout, HiMenu, HiX, HiClock
+  HiDownload, HiStar, HiLogout, HiMenu, HiX, HiClock, HiChartBar
 } from 'react-icons/hi'
-import { MdSpeed, MdCleaningServices, MdGamepad, MdCloudSync, MdDevices } from 'react-icons/md'
+import { MdSpeed, MdCleaningServices, MdGamepad, MdCloudSync, MdDevices, MdAdminPanelSettings } from 'react-icons/md'
 
 export default function DashboardLayout({ children }) {
   const [isArabic, setIsArabic] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
-  const [plan, setPlan] = useState('Free')
+  const { user, profile, signOut, isAdmin } = useAuth()
   const router = useRouter()
 
   useEffect(() => {
     setIsArabic(localStorage.getItem('lang') === 'ar')
   }, [])
+
+  const plan = profile?.plan || 'Free'
+  const planColors = {
+    'Free': 'text-gray-400',
+    'Premium': 'text-primary-500',
+    'Ultimate': 'text-purple-500',
+  }
 
   const navItems = isArabic
     ? [
@@ -24,6 +32,7 @@ export default function DashboardLayout({ children }) {
         { href: '/dashboard/booster', label: 'تسريع الألعاب', icon: <MdSpeed /> },
         { href: '/dashboard/emulator', label: 'تحسين المحاكيات', icon: <HiChip /> },
         { href: '/dashboard/optimizer', label: 'تحسين متقدم', icon: <HiAdjustments /> },
+        { href: '/dashboard/consumption', label: 'الاستهلاك', icon: <HiChartBar /> },
         { href: '/dashboard/scheduler', label: 'الجدولة', icon: <HiClock /> },
         { href: '/dashboard/cloud', label: 'السحابة', icon: <MdCloudSync /> },
         { href: '/dashboard/settings', label: 'الإعدادات', icon: <HiAdjustments /> },
@@ -34,16 +43,11 @@ export default function DashboardLayout({ children }) {
         { href: '/dashboard/booster', label: 'Game Booster', icon: <MdSpeed /> },
         { href: '/dashboard/emulator', label: 'Emulator Boost', icon: <HiChip /> },
         { href: '/dashboard/optimizer', label: 'Advanced Tweaks', icon: <HiAdjustments /> },
+        { href: '/dashboard/consumption', label: 'Consumption', icon: <HiChartBar /> },
         { href: '/dashboard/scheduler', label: 'Scheduler', icon: <HiClock /> },
         { href: '/dashboard/cloud', label: 'Cloud Sync', icon: <MdCloudSync /> },
         { href: '/dashboard/settings', label: 'Settings', icon: <HiAdjustments /> },
       ]
-
-  const planColors = {
-    'Free': 'text-gray-400',
-    'Premium': 'text-primary-500',
-    'Ultimate': 'text-purple-500',
-  }
 
   return (
     <div className="pt-16 min-h-screen flex">
@@ -55,7 +59,7 @@ export default function DashboardLayout({ children }) {
             <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center text-sm font-bold">
               B
             </div>
-            <span className="text-sm font-semibold text-white">BaTo0oT</span>
+            <span className="text-sm font-semibold text-white">{profile?.full_name || user?.email?.split('@')[0] || 'BaTo0oT'}</span>
           </div>
           <span className={`text-xs font-medium ${planColors[plan]}`}>{plan}</span>
         </div>
@@ -76,10 +80,31 @@ export default function DashboardLayout({ children }) {
               {item.label}
             </Link>
           ))}
+
+          {isAdmin && (
+            <Link
+              href="/admin"
+              onClick={() => setIsOpen(false)}
+              className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm transition-all ${
+                router.pathname === '/admin'
+                  ? 'bg-accent-500/10 text-accent-500 border border-accent-500/20'
+                  : 'text-gray-400 hover:text-white hover:bg-white/5'
+              }`}
+            >
+              <span className="text-lg"><MdAdminPanelSettings /></span>
+              {isArabic ? 'لوحة الإدارة' : 'Admin Panel'}
+            </Link>
+          )}
         </nav>
 
-        <div className="mt-6 pt-6 border-t border-white/5">
-          <button className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-gray-400 hover:text-red-400 hover:bg-red-500/5 transition-all w-full">
+        <div className="mt-6 pt-6 border-t border-white/5 space-y-2">
+          <div className="px-3 text-xs text-gray-500 truncate">
+            {user?.email}
+          </div>
+          <button
+            onClick={() => { signOut(); router.push('/') }}
+            className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-gray-400 hover:text-red-400 hover:bg-red-500/5 transition-all w-full"
+          >
             <HiLogout />
             {isArabic ? 'تسجيل خروج' : 'Sign Out'}
           </button>
@@ -94,13 +119,14 @@ export default function DashboardLayout({ children }) {
       )}
 
       <main className="flex-1 p-4 sm:p-6 lg:p-8">
-        <div className="lg:hidden mb-4">
+        <div className="lg:hidden mb-4 flex items-center justify-between">
           <button
             onClick={() => setIsOpen(true)}
             className="p-2 rounded-xl glass text-white"
           >
             <HiMenu size={20} />
           </button>
+          <span className="text-sm text-gray-400">{user?.email}</span>
         </div>
         {children}
       </main>
