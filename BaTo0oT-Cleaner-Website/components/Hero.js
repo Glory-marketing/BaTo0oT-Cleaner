@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { HiDownload, HiPlay, HiShieldCheck, HiLightningBolt, HiChip, HiChartBar } from 'react-icons/hi'
+import Logo3D from './Logo3D'
 
 export default function Hero() {
   const [isArabic, setIsArabic] = useState(false)
@@ -166,8 +167,8 @@ export default function Hero() {
                 </div>
               </div>
 
-              <div className="absolute -top-4 -right-4 w-24 h-24 rounded-2xl bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center animate-float">
-                <HiChip size={40} className="text-white" />
+              <div className="absolute -top-4 -right-4 logo-3d-large">
+                <Logo3D size={96} />
               </div>
             </div>
           </div>

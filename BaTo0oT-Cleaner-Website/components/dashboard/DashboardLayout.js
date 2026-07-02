@@ -7,6 +7,7 @@ import {
   HiDownload, HiStar, HiLogout, HiMenu, HiX, HiClock, HiChartBar
 } from 'react-icons/hi'
 import { MdSpeed, MdCleaningServices, MdGamepad, MdCloudSync, MdDevices, MdAdminPanelSettings } from 'react-icons/md'
+import Logo3D from '@/components/Logo3D'
 
 export default function DashboardLayout({ children }) {
   const [isArabic, setIsArabic] = useState(false)
@@ -56,9 +57,7 @@ export default function DashboardLayout({ children }) {
       } w-64 glass border-r border-white/5 p-4 overflow-y-auto`}>
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center text-sm font-bold">
-              B
-            </div>
+            <Logo3D size={32} />
             <span className="text-sm font-semibold text-white">{profile?.full_name || user?.email?.split('@')[0] || 'BaTo0oT'}</span>
           </div>
           <span className={`text-xs font-medium ${planColors[plan]}`}>{plan}</span>

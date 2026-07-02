@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import { HiHeart } from 'react-icons/hi'
+import Logo3D from './Logo3D'
 
 export default function Footer() {
   const [isArabic, setIsArabic] = useState(false)
@@ -47,9 +48,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           <div className="space-y-4">
             <Link href="/" className="flex items-center gap-2">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center font-bold text-lg">
-                B
-              </div>
+              <Logo3D size={40} />
               <span className="text-xl font-bold">
                 <span className="gradient-text">BaTo0oT</span>
                 <span className="text-white"> Cleaner</span>

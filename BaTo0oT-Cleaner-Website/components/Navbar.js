@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { HiMenu, HiX } from 'react-icons/hi'
 import { useAuth } from '@/contexts/AuthContext'
+import Logo3D from './Logo3D'
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -70,9 +71,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16 md:h-20">
           <Link href="/" className="flex items-center gap-2 group">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center font-bold text-lg group-hover:animate-glow transition-all">
-              B
-            </div>
+            <Logo3D size={40} />
             <span className="text-xl font-bold">
               <span className="gradient-text">BaTo0oT</span>
               <span className="text-white"> Cleaner</span>
