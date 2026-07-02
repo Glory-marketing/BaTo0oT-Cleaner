@@ -235,14 +235,12 @@ body.arabic {
   position: relative;
   z-index: 1;
   border-radius: 16px;
-  background: linear-gradient(135deg, #00bb39, #00f5ff, #bf00ff, #00bb39);
-  background-size: 300% 300%;
-  animation: logoGradient 4s ease infinite;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 900;
-  color: white;
   overflow: hidden;
 }
 

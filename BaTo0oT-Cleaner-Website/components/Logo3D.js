@@ -1,5 +1,4 @@
 export default function Logo3D({ size = 40, className = '' }) {
-  const fontSize = Math.round(size * 0.5)
 
   return (
     <div className={`logo-3d-container ${className}`} style={{ width: size, height: size }}>
@@ -10,9 +9,13 @@ export default function Logo3D({ size = 40, className = '' }) {
         <div className="logo-3d-ring" />
         <div
           className="logo-3d-inner"
-          style={{ width: size, height: size, fontSize }}
+          style={{ width: size, height: size }}
         >
-          B
+          <img
+            src="/logo.svg"
+            alt="BaTo0oT Cleaner"
+            style={{ width: '60%', height: '60%', objectFit: 'contain' }}
+          />
         </div>
       </div>
     </div>
